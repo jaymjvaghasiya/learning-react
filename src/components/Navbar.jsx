@@ -1,0 +1,46 @@
+import React from 'react'
+import { Link } from 'react-router-dom'
+
+export const Navbar = (props) => {
+    return (
+        <div>
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <Link class="navbar-brand" to="/">{props.title}</Link>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item active">
+                            <Link class="nav-link" to="/movies">Movies <span class="sr-only">(current)</span></Link>
+                        </li>
+                        <li class="nav-item">
+                            <Link class="nav-link" to="/shows">Shows </Link>
+                        </li>
+                        <li class="nav-item">
+                            <Link class="nav-link" to="/usestatedemo1">UseStateDemo1 </Link>
+                        </li>
+                        <li class="nav-item">
+                            <Link class="nav-link" to="/usestatedemo2">UseStateDemo2 </Link>
+                        </li>
+                        <li class="nav-item">
+                            <Link class="nav-link" to="/usestatedemo3">UseStateDemo3 </Link>
+                        </li>
+                        <li class="nav-item">
+                            <Link class="nav-link" to="/usestatedemo4">UseStateDemo4 </Link>
+                        </li>
+                        <li class="nav-item">
+                            <Link class="nav-link" to="/ipl">IPL </Link>
+                        </li>
+                        <li class="nav-item">
+                            <Link class="nav-link" to="/formdemo1">FORM DEMO 1 </Link>
+                        </li>
+                        <li class="nav-item">
+                            <Link class="nav-link" to="/formdemo2">FORM DEMO 2 </Link>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    )
+}
