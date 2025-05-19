@@ -1,5 +1,6 @@
 import React from 'react'
 import { useForm } from 'react-hook-form'
+import { MySpan } from '../MySpan';
 
 export const FormDemo2 = () => {
 
@@ -31,12 +32,12 @@ export const FormDemo2 = () => {
             <div>
                 <label>Name : </label>
                 <input type='text' {...register("name", validationSchema.nameValidator)} />
-                {errors.name?.message}
+                <MySpan color='red' title={errors.name?.message}></MySpan>
             </div>
             <div>
                 <label>Age: </label>
                 <input type='text' {...register("age", validationSchema.ageValidator)} />
-                {errors.age?.message}
+                <MySpan color='red' title={errors.age?.message}></MySpan>
             </div>
             <div>
                 <input type='submit'/>
