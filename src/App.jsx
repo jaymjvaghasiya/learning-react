@@ -20,13 +20,15 @@ import { IPLHome } from './components/ipl/IPLHome'
 import { FormDemo1 } from './components/form/FormDemo1'
 import { FormDemo2 } from './components/form/FormDemo2'
 import { AddProduct } from './components/form/AddProduct'
+import { FormDemo4 } from './components/form/FormDemo4'
+import { FormDemo5 } from './components/form/FormDemo5'
 
 function App() {
  
   const location = useLocation();
   const validPaths = ['/', '/movies', '/shows', '/playcontent/:id', '/usestatedemo1', 
                       '/usestatedemo2', '/usestatedemo3', '/usestatedemo4', '/ipl', 
-                      '/formdemo1', '/formdemo2', '/addproduct'];
+                      '/formdemo1', '/formdemo2', '/formdemo4', '/formdemo5', '/addproduct'];
   const showNavbar = validPaths.some(path => 
     matchPath({path, end: true}, location.pathname)
   );
@@ -52,6 +54,8 @@ function App() {
         <Route path='/ipl' element={<IPLHome/>}></Route>
         <Route path='/formdemo1' element={<FormDemo1/>}></Route>
         <Route path='/formdemo2' element={<FormDemo2/>}></Route>
+        <Route path='/formdemo4' element={<FormDemo4/>}></Route>
+        <Route path='/formdemo5' element={<FormDemo5/>}></Route>
         <Route path='/addproduct' element={<AddProduct/>}></Route>
         <Route path='/*' element={<Error404/>}></Route>
       </Routes>
