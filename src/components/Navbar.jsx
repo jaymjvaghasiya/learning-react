@@ -17,12 +17,12 @@ export const Navbar = (props) => {
                         <li class="nav-item">
                             <Link class="nav-link" to="/shows">Shows </Link>
                         </li>
-                        <li class="nav-item">
+                        {/* <li class="nav-item">
                             <Link class="nav-link" to="/usestatedemo1">UseStateDemo1 </Link>
                         </li>
                         <li class="nav-item">
                             <Link class="nav-link" to="/usestatedemo2">UseStateDemo2 </Link>
-                        </li>
+                        </li> */}
                         <li class="nav-item">
                             <Link class="nav-link" to="/usestatedemo3">UseStateDemo3 </Link>
                         </li>
@@ -32,12 +32,12 @@ export const Navbar = (props) => {
                         <li class="nav-item">
                             <Link class="nav-link" to="/ipl">IPL </Link>
                         </li>
-                        <li class="nav-item">
+                        {/* <li class="nav-item">
                             <Link class="nav-link" to="/formdemo1">FORM DEMO 1 </Link>
                         </li>
                         <li class="nav-item">
                             <Link class="nav-link" to="/formdemo2">FORM DEMO 2 </Link>
-                        </li>
+                        </li> */}
                         <li class="nav-item">
                             <Link class="nav-link" to="/formdemo4">FORM DEMO 4 </Link>
                         </li>
@@ -45,7 +45,14 @@ export const Navbar = (props) => {
                             <Link class="nav-link" to="/formdemo5">FORM DEMO 5 </Link>
                         </li>
                         <li class="nav-item">
+                            <Link class="nav-link" to="/memodemo2">Use Memo Demo 2 </Link>
+                        </li>
+                        <li class="nav-item">
                             <Link class="nav-link" to="/addproduct">Add Product </Link>
+                        </li>
+                        <li class="nav-item">
+                            <Link class="nav-link" to="/findbomb">Find Bomb </Link>
+
                         </li>
                     </ul>
                 </div>
