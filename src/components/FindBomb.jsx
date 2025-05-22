@@ -12,15 +12,21 @@ export const FindBomb = () => {
     const [clickedTiles, setClickedTiles] = useState([]);
     const [message, setMessage] = useState("Find Bomb");
     const [emoji, setEmoji] = useState("");
+    const [score, setScore] = useState(0);
 
     const handleTileClick = (index) => {
+        if(flag)
+            return;
+
         setClickedTiles([...clickedTiles, index]);
         setMessage("Searching...");
-        setEmoji("💎");
+        setScore(score+1);
+        // setEmoji("💎");
         if(index == bombPos) {
+            // setScore(score-1);
             setMessage("Game Over...");
             setFlag(true);
-            setEmoji("💣");
+            // setEmoji("💣");
         }
     }
 
@@ -50,11 +56,12 @@ export const FindBomb = () => {
                             cursor: "pointer"
                         }}
                     >
-                        {clickedTiles.includes(tileIndex) ? bombPos == tileIndex ? "💣" : emoji : ""}
+                        {flag && (bombPos == tileIndex && "💣")}
                         {/* {flag == "true" && bombPos == tileIndex ? bomb : clickedTiles.includes(tileIndex) ? setEmoji : ""} */}
                     </div>
                 ))}
-            </div>
+            </div><br/>
+            <h2>Your score : {clickedTiles.length}</h2>
 
         </div>
     )
