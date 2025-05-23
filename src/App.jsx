@@ -24,6 +24,9 @@ import { FormDemo4 } from './components/form/FormDemo4'
 import { FormDemo5 } from './components/form/FormDemo5'
 import { UseMemoDemo2 } from './components/UseMemoDemo2'
 import { FindBomb } from './components/FindBomb'
+import { UseMemoDemo1 } from './components/UseMemoDemo1'
+import { ApiDemo1 } from './components/api/ApiDemo1'
+import { GetProductApi } from './components/api/GetProductApi'
 
 function App() {
  
@@ -31,7 +34,7 @@ function App() {
   const validPaths = ['/', '/movies', '/shows', '/playcontent/:id', '/usestatedemo1', 
                       '/usestatedemo2', '/usestatedemo3', '/usestatedemo4', '/ipl', 
                       '/formdemo1', '/formdemo2', '/formdemo4', '/formdemo5', '/addproduct',
-                    '/memodemo2', '/findbomb'];
+                      '/memodemo1', '/memodemo2', '/findbomb', '/apidemo1', '/getproducts'];
   const showNavbar = validPaths.some(path => 
     matchPath({path, end: true}, location.pathname)
   );
@@ -59,9 +62,12 @@ function App() {
         <Route path='/formdemo2' element={<FormDemo2/>}></Route>
         <Route path='/formdemo4' element={<FormDemo4/>}></Route>
         <Route path='/formdemo5' element={<FormDemo5/>}></Route>
-        <Route path='/memodemo2' element={<UseMemoDemo2/>}></Route>
+        {/* <Route path='/memodemo1' element={<UseMemoDemo1/>}></Route>
+        <Route path='/memodemo2' element={<UseMemoDemo2/>}></Route> */}
         <Route path='/addproduct' element={<AddProduct/>}></Route>
         <Route path='/findbomb' element={<FindBomb/>}></Route>
+        <Route path='/apidemo1' element={<ApiDemo1/>}></Route>
+        <Route path='/getproducts' element={<GetProductApi/>}></Route>
         <Route path='/*' element={<Error404/>}></Route>
       </Routes>
     </>

@@ -1,37 +1,53 @@
-import React, { useMemo, useState } from 'react'
+import React, { useCallback, useMemo, useState } from 'react'
+import { set } from 'react-hook-form';
+
+
+const Tile = React.memo(({ index, isClicked, isBomb, flag, onClick }) => {
+    return (
+        <div
+            onClick={() => onClick(index)}
+            style={{
+                width: "50px",
+                height: "50px",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                border: "1px solid black",
+                backgroundColor: isClicked ? "#ddd" : "#fff",
+                cursor: flag ? "not-allowed" : "pointer"
+            }}
+        >
+            {flag && isBomb ? "💣" : isClicked ? "💎" : ""}
+        </div>
+    )
+})
 
 export const FindBomb = () => {
 
     let totalTiles = 5;
     let buildGride = totalTiles * totalTiles;
 
-    let bombPos = useMemo(()=>Math.floor(Math.random()*buildGride), []);
+    let bombPos = useMemo(() => Math.floor(Math.random() * buildGride), []);
     console.log(bombPos);
-    
-    const [flag, setFlag] = useState(false);
-    const [clickedTiles, setClickedTiles] = useState([]);
-    const [message, setMessage] = useState("Find Bomb");
-    const [emoji, setEmoji] = useState("");
-    const [score, setScore] = useState(0);
 
-    const handleTileClick = (index) => {
-        if(flag)
+    const [flag, setFlag] = useState(false);
+    const [clickedTiles, setClickedTiles] = useState(new Set());
+    const [message, setMessage] = useState("Find Bomb");
+
+    const handleTileClick = useCallback((index) => {
+        if (flag)
             return;
 
-        setClickedTiles([...clickedTiles, index]);
+        setClickedTiles(prev => new Set(prev).add(index));
         setMessage("Searching...");
-        setScore(score+1);
-        // setEmoji("💎");
-        if(index == bombPos) {
-            // setScore(score-1);
+        if (index == bombPos) {
             setMessage("Game Over...");
             setFlag(true);
-            // setEmoji("💣");
         }
-    }
+    }, [flag, clickedTiles, bombPos]);
 
     return (
-        <div style={{textAlign: "center"}}>
+        <div style={{ textAlign: "center" }}>
             <h1>{message}</h1>
             <div
                 style={{
@@ -41,27 +57,18 @@ export const FindBomb = () => {
                     justifyContent: "center",
                 }}
             >
-                {Array.from({ length: buildGride }).map((_, tileIndex) => (
-                    <div
-                        key={tileIndex}
-                        onClick={() => handleTileClick(tileIndex)}
-                        style={{
-                            width: "50px",
-                            height: "50px",
-                            display: "flex",
-                            alignItems: "center",
-                            justifyContent: "center",
-                            border: "1px solid black",
-                            backgroundColor: clickedTiles.includes(tileIndex) ? "#ddd" : "#fff",
-                            cursor: "pointer"
-                        }}
-                    >
-                        {flag && (bombPos == tileIndex && "💣")}
-                        {/* {flag == "true" && bombPos == tileIndex ? bomb : clickedTiles.includes(tileIndex) ? setEmoji : ""} */}
-                    </div>
+                {Array.from({ length: buildGride }).map((_, index) => (
+                    <Tile 
+                        key={index}
+                        index={index}
+                        isClicked={clickedTiles.has(index)}
+                        isBomb={bombPos == index}
+                        flag={flag}
+                        onClick={handleTileClick}
+                    />
                 ))}
-            </div><br/>
-            <h2>Your score : {clickedTiles.length}</h2>
+            </div><br />
+            <h2>Your score : {clickedTiles.size}</h2>
 
         </div>
     )
