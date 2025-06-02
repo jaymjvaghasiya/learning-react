@@ -13,6 +13,7 @@ export const ApiDemo2 = () => {
             name: "Ram",
             age: 22,
             email: "ram@gmail.com",
+            password: "ram",
             status: true
         }
         

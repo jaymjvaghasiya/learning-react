@@ -35,6 +35,9 @@ import { AddProducts } from './components/form/AddProducts'
 import { UpdateUser } from './components/form/UpdateUser'
 import { Products } from './components/products/Products'
 import { ProductData } from './components/products/ProductData'
+import { Login } from './components/Login'
+import { ToastContainer, Bounce } from 'react-toastify'
+import ProtectedRoutes from './hooks/ProtectedRoutes'
 
 function App() {
  
@@ -43,7 +46,7 @@ function App() {
                       '/usestatedemo2', '/usestatedemo3', '/usestatedemo4', '/ipl', 
                       '/formdemo1', '/formdemo2', '/formdemo4', '/formdemo5', '/formdemo6', '/addproduct',
                       '/addproducts', '/memodemo1', '/memodemo2', '/findbomb', '/apidemo1', '/getproducts',
-                      '/useeffect1', '/apidemo2', '/apidemo4', '/products', '/productdata'];
+                      '/useeffect1', '/apidemo2', '/apidemo4', '/products', '/productdata', '/login'];
   const showNavbar = validPaths.some(path => 
     matchPath({path, end: true}, location.pathname)
   );
@@ -83,10 +86,31 @@ function App() {
         <Route path='/apidemo4' element={<ApiDemo4/>}></Route>
         <Route path='/getproducts' element={<GetProductApi/>}></Route>
         <Route path='/useeffect1' element={<UseEffectDemo1/>}></Route>
-        <Route path='/products' element={<Products/>}></Route>
-        <Route path='/productdata' element={<ProductData/>}></Route>
+
+        <Route element={<ProtectedRoutes/>}>
+          <Route path='/products' element={<Products/>}></Route>
+          <Route path='/productdata' element={<ProductData/>}></Route>
+        </Route>
+
+        <Route path='/login' element={<Login/>}></Route>
+
         <Route path='/*' element={<Error404/>}></Route>
       </Routes>
+
+       <ToastContainer
+        position="top-center"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick={false}
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="dark"
+        transition={Bounce}
+      />
+
     </>
   )
 }

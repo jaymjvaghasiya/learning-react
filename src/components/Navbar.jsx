@@ -65,10 +65,10 @@ export const Navbar = (props) => {
                         <li class="nav-item">
                             <Link class="nav-link" to="/apidemo1">API DEMO 1 </Link>
                         </li>
-                        {/* <li class="nav-item">
+                        <li class="nav-item">
                             <Link class="nav-link" to="/apidemo2">API DEMO 2 </Link>
                         </li>
-                        <li class="nav-item">
+                        {/* <li class="nav-item">
                             <Link class="nav-link" to="/apidemo4">API DEMO 4 </Link>
                         </li>
                         <li class="nav-item">
@@ -82,6 +82,9 @@ export const Navbar = (props) => {
                         </li>
                         <li class="nav-item">
                             <Link class="nav-link" to="/productdata">Product Data</Link>
+                        </li>
+                        <li class="nav-item">
+                            <Link class="nav-link" to="/login">Login</Link>
                         </li>
                     </ul>
                 </div>
