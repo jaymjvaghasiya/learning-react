@@ -23,7 +23,7 @@ export const Navbar = (props) => {
                         <li class="nav-item">
                             <Link class="nav-link" to="/usestatedemo2">UseStateDemo2 </Link>
                         </li> */}
-                        <li class="nav-item">
+                        {/* <li class="nav-item">
                             <Link class="nav-link" to="/usestatedemo3">UseStateDemo3 </Link>
                         </li>
                         <li class="nav-item">
@@ -31,7 +31,7 @@ export const Navbar = (props) => {
                         </li>
                         <li class="nav-item">
                             <Link class="nav-link" to="/ipl">IPL </Link>
-                        </li>
+                        </li> */}
                         {/* <li class="nav-item">
                             <Link class="nav-link" to="/formdemo1">FORM DEMO 1 </Link>
                         </li>
@@ -44,6 +44,9 @@ export const Navbar = (props) => {
                         <li class="nav-item">
                             <Link class="nav-link" to="/formdemo5">FORM DEMO 5 </Link>
                         </li>
+                        <li class="nav-item">
+                            <Link class="nav-link" to="/formdemo6">FORM DEMO 6 </Link>
+                        </li>
                         {/* <li class="nav-item">
                             <Link class="nav-link" to="/memodemo1">Use Memo Demo 1 </Link>
                         </li>
@@ -54,13 +57,31 @@ export const Navbar = (props) => {
                             <Link class="nav-link" to="/addproduct">Add Product </Link>
                         </li> */}
                         <li class="nav-item">
+                            <Link class="nav-link" to="/addproducts">Add Products </Link>
+                        </li>
+                        <li class="nav-item">
                             <Link class="nav-link" to="/findbomb">Find Bomb </Link>
                         </li>
                         <li class="nav-item">
                             <Link class="nav-link" to="/apidemo1">API DEMO 1 </Link>
                         </li>
+                        {/* <li class="nav-item">
+                            <Link class="nav-link" to="/apidemo2">API DEMO 2 </Link>
+                        </li>
+                        <li class="nav-item">
+                            <Link class="nav-link" to="/apidemo4">API DEMO 4 </Link>
+                        </li>
                         <li class="nav-item">
                             <Link class="nav-link" to="/getproducts">Get Products</Link>
+                        </li>
+                        <li class="nav-item">
+                            <Link class="nav-link" to="/useeffect1">Use Effect 1</Link>
+                        </li> */}
+                        <li class="nav-item">
+                            <Link class="nav-link" to="/products">Products</Link>
+                        </li>
+                        <li class="nav-item">
+                            <Link class="nav-link" to="/productdata">Product Data</Link>
                         </li>
                     </ul>
                 </div>

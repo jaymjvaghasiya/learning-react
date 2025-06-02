@@ -1,5 +1,5 @@
 import axios from 'axios'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { MyButton } from '../MyButton';
 import { Loader } from '../Loader';
 
@@ -7,6 +7,8 @@ export const GetProductApi = () => {
 
     const [products, setProducts] = useState([]);
     const [loading, setLoading] = useState(false);
+
+    useEffect(()=>{getProductData()}, []);
 
     const getProductData = async () => {
         setLoading(true);
