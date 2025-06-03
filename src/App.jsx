@@ -75,8 +75,8 @@ function App() {
         <Route path='/formdemo4' element={<FormDemo4/>}></Route>
         <Route path='/formdemo5' element={<FormDemo5/>}></Route>
         <Route path='/formdemo6' element={<FormDemo6/>}></Route>
-        {/* <Route path='/memodemo1' element={<UseMemoDemo1/>}></Route>
-        <Route path='/memodemo2' element={<UseMemoDemo2/>}></Route> */}
+        <Route path='/memodemo1' element={<UseMemoDemo1/>}></Route>
+        <Route path='/memodemo2' element={<UseMemoDemo2/>}></Route>
         <Route path='/addproduct' element={<AddProduct/>}></Route>
         <Route path='/addproducts' element={<AddProducts/>}></Route>
         <Route path='/findbomb' element={<FindBomb/>}></Route>

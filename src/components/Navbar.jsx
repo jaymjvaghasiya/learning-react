@@ -49,10 +49,10 @@ export const Navbar = (props) => {
                         </li>
                         {/* <li class="nav-item">
                             <Link class="nav-link" to="/memodemo1">Use Memo Demo 1 </Link>
-                        </li>
+                        </li> */}
                         <li class="nav-item">
                             <Link class="nav-link" to="/memodemo2">Use Memo Demo 2 </Link>
-                        </li> */}
+                        </li>
                         {/* <li class="nav-item">
                             <Link class="nav-link" to="/addproduct">Add Product </Link>
                         </li> */}

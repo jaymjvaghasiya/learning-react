@@ -14,6 +14,8 @@ export const ApiDemo1 = () => {
     const [load, setload] = useState(false);
     const [singleUser, setSingleUser] = useState({});
     const [show, setShow] = useState(false);
+    const [filteredNewData, setFilterNewData] = useState();
+    const [isSearching, setIsSerching] = useState(false);
 
     // const getData = async () => {
     //     setload(true);
@@ -65,6 +67,19 @@ export const ApiDemo1 = () => {
         setShow(false);
     }
 
+    const filterData = async (event) => {
+        console.log(event.target.value);
+        let val = event.target.value;
+        setIsSerching(true);
+        const res = await axios.get("https://node5.onrender.com/user/filter2", {
+            params: {
+                name: val
+            }
+        });
+        console.log(res.data.data);
+        setFilterNewData(res.data.data);
+    }
+
     // useEffect(() => {
     //     getData();
     // }, [])
@@ -97,6 +112,8 @@ export const ApiDemo1 = () => {
             })
         } */}
 
+            <input style={{marginBottom: "1rem"}} type='search' placeholder='search' onChange={()=>{filterData(event)}} />
+
             <table className='table table-dark'>
                 <thead>
                     <tr>
@@ -109,7 +126,24 @@ export const ApiDemo1 = () => {
                     </tr>
                 </thead>
                 <tbody>
-                    {
+                    {   isSearching ? 
+                        filterNewData.map((u) => {
+                                return (
+                                    <tr>
+                                        <td>{u._id}</td>
+                                        <td>{u.name}</td>
+                                        <td>{u.age}</td>
+                                        <td>{u.email}</td>
+                                        <td>{u.isActive ? "Active" : "Not Active"}</td>
+                                        <td>
+                                            <button className='btn btn-danger' onClick={() => { deleteUser(u._id) }}>DELETE</button>
+                                            <button className='btn btn-info' onClick={() => { getSingleUser(u._id) }}>DATA</button>
+                                            <Link to={`/updateuser/${u._id}`} className='btn btn-warning'>UPDATE</Link>
+                                        </td>
+                                    </tr>
+                                )
+                            })
+                        :
                         data.map((u) => {
                             return (
                                 <tr>
@@ -147,3 +181,5 @@ export const ApiDemo1 = () => {
         </div>
     )
 }
+
+// https://node5.onrender.com/user/filter2

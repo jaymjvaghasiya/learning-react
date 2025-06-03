@@ -5,7 +5,7 @@ import { useState } from 'react';
 
 export const FormDemo5 = () => {
 
-    const {register, handleSubmit, formState: {errors}} = useForm({mode: "onChange"});
+    const {register, handleSubmit, formState: {errors}} = useForm({mode: 'all'});
     const [data, setdata] = useState({})
     const [isSubmitted, setIsSubmitted] = useState(false);
     const submitHandler = (data) => {
