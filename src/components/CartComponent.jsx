@@ -1,16 +1,23 @@
 import React, { useEffect, useState } from 'react'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
+import { removeFromCart } from '../redux/CartSlice';
 
 export const CartComponent = () => {
 
     const [data, setData] = useState([]);
     const cart = useSelector((state) => state.cart.cart);
-
+    const dispatch = useDispatch();
     
     useEffect(()=>{
         console.log(cart);
         setData(cart);
     }, []);
+
+    const removeProduct = (product) => {
+        dispatch(removeFromCart(product));
+        const updatedData = data.filter(item => item.id !== product.id);
+        setData(updatedData);
+    }
 
     return (
         <div className="container mt-4">
@@ -28,10 +35,10 @@ export const CartComponent = () => {
                                     </p>
                                     {/* <button onClick={() => { dispatch(addToCart(product)) }} className='btn btn-primary'>ADD TO CART</button> */}
                                     <button
-                                        onClick={() => dispatch(addToCart(product))}
-                                        className='btn btn-primary'
+                                        onClick={() => removeProduct(product)}
+                                        className='btn btn-danger'
                                     >
-                                        ADD TO CART
+                                        REMOVE FROM CART
                                     </button>
 
                                 </div>
