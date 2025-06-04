@@ -38,15 +38,19 @@ import { ProductData } from './components/products/ProductData'
 import { Login } from './components/Login'
 import { ToastContainer, Bounce } from 'react-toastify'
 import ProtectedRoutes from './hooks/ProtectedRoutes'
+import { ReduxProductList } from './components/ReduxProductList'
+import { ReduxBank } from './components/ReduxBank'
+import { CartComponent } from './components/CartComponent'
 
 function App() {
  
   const location = useLocation();
   const validPaths = ['/', '/movies', '/shows', '/playcontent/:id', '/updateuser/:id', '/usestatedemo1', 
-                      '/usestatedemo2', '/usestatedemo3', '/usestatedemo4', '/ipl', 
+                      '/usestatedemo2', '/usestatedemo3', '/usestatedemo4', '/ipl', '/reduxproductlist', 
                       '/formdemo1', '/formdemo2', '/formdemo4', '/formdemo5', '/formdemo6', '/addproduct',
                       '/addproducts', '/memodemo1', '/memodemo2', '/findbomb', '/apidemo1', '/getproducts',
-                      '/useeffect1', '/apidemo2', '/apidemo4', '/products', '/productdata', '/login'];
+                      '/useeffect1', '/apidemo2', '/apidemo4', '/products', '/productdata', '/login', '/bank',
+                    '/cartproducts'];
   const showNavbar = validPaths.some(path => 
     matchPath({path, end: true}, location.pathname)
   );
@@ -86,7 +90,9 @@ function App() {
         <Route path='/apidemo4' element={<ApiDemo4/>}></Route>
         <Route path='/getproducts' element={<GetProductApi/>}></Route>
         <Route path='/useeffect1' element={<UseEffectDemo1/>}></Route>
-
+        <Route path='/reduxproductlist' element={<ReduxProductList/>}></Route>
+        <Route path='/bank' element={<ReduxBank/>}></Route>
+        <Route path='/cartproducts' element={<CartComponent/>}></Route>
         <Route element={<ProtectedRoutes/>}>
           <Route path='/products' element={<Products/>}></Route>
           <Route path='/productdata' element={<ProductData/>}></Route>

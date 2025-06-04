@@ -14,7 +14,7 @@ export const ApiDemo1 = () => {
     const [load, setload] = useState(false);
     const [singleUser, setSingleUser] = useState({});
     const [show, setShow] = useState(false);
-    const [filteredNewData, setFilterNewData] = useState();
+    const [filterNewData, setFilterNewData] = useState();
     const [isSearching, setIsSerching] = useState(false);
 
     // const getData = async () => {
@@ -126,7 +126,7 @@ export const ApiDemo1 = () => {
                     </tr>
                 </thead>
                 <tbody>
-                    {   isSearching ? 
+                    {   isSearching && filterData ? 
                         filterNewData.map((u) => {
                                 return (
                                     <tr>

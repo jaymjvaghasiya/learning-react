@@ -1,7 +1,13 @@
 import React from 'react'
+import { useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 
 export const Navbar = (props) => {
+
+    const cart = useSelector((state)=>state.cart.cart);
+    // console.log("cart...", cart);
+    const bank = useSelector((state)=>state.bank);
+    
     return (
         <div>
             <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -11,12 +17,12 @@ export const Navbar = (props) => {
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav">
-                        <li class="nav-item active">
+                        {/* <li class="nav-item active">
                             <Link class="nav-link" to="/movies">Movies <span class="sr-only">(current)</span></Link>
                         </li>
                         <li class="nav-item">
                             <Link class="nav-link" to="/shows">Shows </Link>
-                        </li>
+                        </li> */}
                         {/* <li class="nav-item">
                             <Link class="nav-link" to="/usestatedemo1">UseStateDemo1 </Link>
                         </li>
@@ -38,7 +44,7 @@ export const Navbar = (props) => {
                         <li class="nav-item">
                             <Link class="nav-link" to="/formdemo2">FORM DEMO 2 </Link>
                         </li> */}
-                        <li class="nav-item">
+                        {/* <li class="nav-item">
                             <Link class="nav-link" to="/formdemo4">FORM DEMO 4 </Link>
                         </li>
                         <li class="nav-item">
@@ -46,7 +52,7 @@ export const Navbar = (props) => {
                         </li>
                         <li class="nav-item">
                             <Link class="nav-link" to="/formdemo6">FORM DEMO 6 </Link>
-                        </li>
+                        </li> */}
                         {/* <li class="nav-item">
                             <Link class="nav-link" to="/memodemo1">Use Memo Demo 1 </Link>
                         </li> */}
@@ -84,7 +90,25 @@ export const Navbar = (props) => {
                             <Link class="nav-link" to="/productdata">Product Data</Link>
                         </li>
                         <li class="nav-item">
+                            <Link class="nav-link" to="/reduxproductlist">Redux Products</Link>
+                        </li>
+                        <li class="nav-item">
+                            <Link class="nav-link" to="/bank">Bank</Link>
+                        </li>
+                        <li class="nav-item">
                             <Link class="nav-link" to="/login">Login</Link>
+                        </li>
+                        
+                        <li class="nav-item">
+                            <Link class="nav-link">Cart: {cart.length}</Link>
+                        </li>
+                        
+                        <li class="nav-item">
+                            <Link class="nav-link"><b>Balance: {bank.balance}</b></Link>
+                        </li>
+                        
+                        <li class="nav-item">
+                            <Link class="nav-link" to="/cartproducts"><b>Cart Products</b></Link>
                         </li>
                     </ul>
                 </div>
