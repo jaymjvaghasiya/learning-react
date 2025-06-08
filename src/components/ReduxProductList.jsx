@@ -1,64 +1,60 @@
 import React, { useState } from 'react'
-import { useDispatch } from 'react-redux'
-import { addToCart } from '../redux/CartSlice';
+import { useDispatch, useSelector } from 'react-redux'
+import { addToCart } from '../redux/CartSlice'
+import { createTheme, ThemeProvider } from '@mui/material/styles'
+import {
+    Card,
+    CardContent,
+    Typography,
+    Button,
+    Grid,
+    Container
+} from '@mui/material'
 
 export const ReduxProductList = () => {
+    const projectTheme = useSelector((state) => state.theme.theme)
 
-    const dispatch = useDispatch();
+    const theme = createTheme({
+        palette: {
+            mode: projectTheme,
+        },
+    })
+
+    const dispatch = useDispatch()
 
     const [data, setData] = useState([
-        {
-            id: 101,
-            name: "TV",
-            price: 1200,
-            description: "128 gb"
-        },
-        {
-            id: 102,
-            name: "FRIDGT",
-            price: 800,
-            description: "500 gb"
-        },
-        {
-            id: 103,
-            name: "MONITOR",
-            price: 3000,
-            description: "256 gb"
-        }
+        { id: 101, name: "TV", price: 1200, description: "128 GB" },
+        { id: 102, name: "FRIDGE", price: 800, description: "500 GB" },
+        { id: 103, name: "MONITOR", price: 3000, description: "256 GB" }
     ])
 
     return (
-        <div className="container mt-4">
-            <h1 className="mb-4">Product Display</h1>
-            <div className="row">
-                {data && data.length > 0 ? (
-                    data.map((product, index) => (
-                        <div className="col-md-4 mb-4" key={index}>
-                            <div className="card h-100">
-                                <div className="card-body">
-                                    <h5 className="card-title">{product.name}</h5>
-                                    <p className="card-text">{product.description}</p>
-                                    <p className="card-text">
+        <ThemeProvider theme={theme}>
+            <Container sx={{ mt: 4 }}>
+                <Typography variant="h4" gutterBottom>Product Display</Typography>
+                <Grid container spacing={3}>
+                    {data.map((product, index) => (
+                        <Grid item xs={12} sm={6} md={4} key={index}>
+                            <Card sx={{ height: '100%' }}>
+                                <CardContent>
+                                    <Typography variant="h6">{product.name}</Typography>
+                                    <Typography variant="body2">{product.description}</Typography>
+                                    <Typography variant="subtitle2" sx={{ mt: 1 }}>
                                         <strong>Price:</strong> ${product.price}
-                                    </p>
-                                    {/* <button onClick={() => { dispatch(addToCart(product)) }} className='btn btn-primary'>ADD TO CART</button> */}
-                                    <button
+                                    </Typography>
+                                    <Button
+                                        variant="contained"
+                                        sx={{ mt: 2 }}
                                         onClick={() => dispatch(addToCart(product))}
-                                        className='btn btn-primary'
                                     >
                                         ADD TO CART
-                                    </button>
-
-                                </div>
-                            </div>
-                        </div>
-                    ))
-                ) : (
-                    <div className="col-12">
-                        <p>No products available.</p>
-                    </div>
-                )}
-            </div>
-        </div>
+                                    </Button>
+                                </CardContent>
+                            </Card>
+                        </Grid>
+                    ))}
+                </Grid>
+            </Container>
+        </ThemeProvider>
     )
 }

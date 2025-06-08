@@ -41,82 +41,110 @@ import ProtectedRoutes from './hooks/ProtectedRoutes'
 import { ReduxProductList } from './components/ReduxProductList'
 import { ReduxBank } from './components/ReduxBank'
 import { CartComponent } from './components/CartComponent'
+import { RatingBar } from './materialUI/RatingBar'
+import { SliderBar } from './materialUI/SliderBar'
+import { createTheme, ThemeProvider, useColorScheme } from '@mui/material/styles'
+import { useSelector } from 'react-redux'
+import { DashboardLayout } from './components/DashboardLayout'
+import { Layout } from './components/MUIdashboard/Layout'
+import { Toolpad } from './components/MUIdashboard/Toolpad'
+import { Dashboard } from './components/MUIdashboard/Dashboard'
+import { Integrations } from './components/MUIdashboard/Integrations'
+import { Orders } from './components/MUIdashboard/Orders'
+import { Sales } from './components/MUIdashboard/Sales'
+import { Traffic } from './components/MUIdashboard/Traffic'
 
 function App() {
- 
+
   const location = useLocation();
-  const validPaths = ['/', '/movies', '/shows', '/playcontent/:id', '/updateuser/:id', '/usestatedemo1', 
-                      '/usestatedemo2', '/usestatedemo3', '/usestatedemo4', '/ipl', '/reduxproductlist', 
-                      '/formdemo1', '/formdemo2', '/formdemo4', '/formdemo5', '/formdemo6', '/addproduct',
-                      '/addproducts', '/memodemo1', '/memodemo2', '/findbomb', '/apidemo1', '/getproducts',
-                      '/useeffect1', '/apidemo2', '/apidemo4', '/products', '/productdata', '/login', '/bank',
-                    '/cartproducts'];
-  const showNavbar = validPaths.some(path => 
-    matchPath({path, end: true}, location.pathname)
+  const validPaths = ['/', '/movies', '/shows', '/playcontent/:id', '/updateuser/:id', '/usestatedemo1',
+    '/usestatedemo2', '/usestatedemo3', '/usestatedemo4', '/ipl', '/reduxproductlist',
+    '/formdemo1', '/formdemo2', '/formdemo4', '/formdemo5', '/formdemo6', '/addproduct',
+    '/addproducts', '/memodemo1', '/memodemo2', '/findbomb', '/apidemo1', '/getproducts',
+    '/useeffect1', '/apidemo2', '/apidemo4', '/products', '/productdata', '/login', '/bank',
+    '/cartproducts', '/rate', '/slider', '/toolpad', '/dashboard', '/orders', '/reports/traffic', 
+    '/reports/sales', '/integrations'];
+  const showNavbar = validPaths.some(path =>
+    matchPath({ path, end: true }, location.pathname)
   );
 
   const title = "React JS";
-  
+
+  const projectTheme = useSelector((state)=>state.theme.theme);
+
+  const theme = createTheme({
+    palette: {
+      mode: projectTheme,
+    },
+  });
+
   return (
     <>
-      {/* <h1>HELLO ALL...</h1> */}
-      {/* <MapDemo></MapDemo> */}
-      {/* <MapDemo2></MapDemo2> */}
-      {/* <MapDemo3></MapDemo3> */}
-      {showNavbar && <Navbar title={title}/>}
-      <Routes>
-        <Route path='/' element={<HotStarHome/>}></Route>
-        <Route path='/movies' element={<HotStarMovies/>}></Route>
-        <Route path='/shows' element={<HotStarShow/>}></Route>
-        <Route path='/playcontent/:id' element={<PlayMovies/>}></Route>
-        <Route path='/usestatedemo1' element={<UseStateDemo1/>}></Route>
-        <Route path='/usestatedemo2' element={<UseStateDemo2/>}></Route>
-        <Route path='/usestatedemo3' element={<UseStateDemo3/>}></Route>
-        <Route path='/usestatedemo4' element={<UseStateDemo4/>}></Route>
-        <Route path='/ipl' element={<IPLHome/>}></Route>
-        <Route path='/formdemo1' element={<FormDemo1/>}></Route>
-        <Route path='/formdemo2' element={<FormDemo2/>}></Route>
-        <Route path='/formdemo4' element={<FormDemo4/>}></Route>
-        <Route path='/formdemo5' element={<FormDemo5/>}></Route>
-        <Route path='/formdemo6' element={<FormDemo6/>}></Route>
-        <Route path='/memodemo1' element={<UseMemoDemo1/>}></Route>
-        <Route path='/memodemo2' element={<UseMemoDemo2/>}></Route>
-        <Route path='/addproduct' element={<AddProduct/>}></Route>
-        <Route path='/addproducts' element={<AddProducts/>}></Route>
-        <Route path='/findbomb' element={<FindBomb/>}></Route>
-        <Route path='/apidemo1' element={<ApiDemo1/>}></Route>
-        <Route path='/updateuser/:id' element={<UpdateUser/>}></Route>
-        <Route path='/apidemo2' element={<ApiDemo2/>}></Route>
-        <Route path='/apidemo4' element={<ApiDemo4/>}></Route>
-        <Route path='/getproducts' element={<GetProductApi/>}></Route>
-        <Route path='/useeffect1' element={<UseEffectDemo1/>}></Route>
-        <Route path='/reduxproductlist' element={<ReduxProductList/>}></Route>
-        <Route path='/bank' element={<ReduxBank/>}></Route>
-        <Route path='/cartproducts' element={<CartComponent/>}></Route>
-        <Route element={<ProtectedRoutes/>}>
-          <Route path='/products' element={<Products/>}></Route>
-          <Route path='/productdata' element={<ProductData/>}></Route>
-        </Route>
+      <ThemeProvider theme={theme}>
+        {/* <h1>HELLO ALL...</h1> */}
+        {/* <MapDemo></MapDemo> */}
+        {/* <MapDemo2></MapDemo2> */}
+        {/* <MapDemo3></MapDemo3> */}
+        {/* {showNavbar && <Navbar title={title} />} */}
+        <Navbar title={title} />
+        <Routes>
+          <Route path='/' element={<HotStarHome />}></Route>
+          <Route path='/movies' element={<HotStarMovies />}></Route>
+          <Route path='/shows' element={<HotStarShow />}></Route>
+          <Route path='/playcontent/:id' element={<PlayMovies />}></Route>
+          <Route path='/usestatedemo1' element={<UseStateDemo1 />}></Route>
+          <Route path='/usestatedemo2' element={<UseStateDemo2 />}></Route>
+          <Route path='/usestatedemo3' element={<UseStateDemo3 />}></Route>
+          <Route path='/usestatedemo4' element={<UseStateDemo4 />}></Route>
+          <Route path='/ipl' element={<IPLHome />}></Route>
+          <Route path='/formdemo1' element={<FormDemo1 />}></Route>
+          <Route path='/formdemo2' element={<FormDemo2 />}></Route>
+          <Route path='/formdemo4' element={<FormDemo4 />}></Route>
+          <Route path='/formdemo5' element={<FormDemo5 />}></Route>
+          <Route path='/formdemo6' element={<FormDemo6 />}></Route>
+          <Route path='/memodemo1' element={<UseMemoDemo1 />}></Route>
+          <Route path='/memodemo2' element={<UseMemoDemo2 />}></Route>
+          <Route path='/addproduct' element={<AddProduct />}></Route>
+          <Route path='/addproducts' element={<AddProducts />}></Route>
+          <Route path='/findbomb' element={<FindBomb />}></Route>
+          <Route path='/apidemo1' element={<ApiDemo1 />}></Route>
+          <Route path='/updateuser/:id' element={<UpdateUser />}></Route>
+          <Route path='/apidemo2' element={<ApiDemo2 />}></Route>
+          <Route path='/apidemo4' element={<ApiDemo4 />}></Route>
+          <Route path='/getproducts' element={<GetProductApi />}></Route>
+          <Route path='/useeffect1' element={<UseEffectDemo1 />}></Route>
+          <Route path='/reduxproductlist' element={<ReduxProductList />}></Route>
+          <Route path='/bank' element={<ReduxBank />}></Route>
+          <Route path='/cartproducts' element={<CartComponent />}></Route>
+          <Route element={<ProtectedRoutes />}>
+            <Route path='/products' element={<Products />}></Route>
+            <Route path='/productdata' element={<ProductData />}></Route>
+          </Route>
+          <Route path='/rate' element={<RatingBar />}></Route>
+          <Route path='/slider' element={<SliderBar />}></Route>
+          {/* <Route path='/toolpad' element={<Toolpad/>}></Route> */}
+          <Route path='/dashboard/*' element={<Toolpad />} />
+          
 
-        <Route path='/login' element={<Login/>}></Route>
+          <Route path='/login' element={<Login />}></Route>
 
-        <Route path='/*' element={<Error404/>}></Route>
-      </Routes>
+          <Route path='/*' element={<Error404 />}></Route>
+        </Routes>
 
-       <ToastContainer
-        position="top-center"
-        autoClose={5000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick={false}
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-        theme="dark"
-        transition={Bounce}
-      />
-
+        <ToastContainer
+          position="top-center"
+          autoClose={5000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick={false}
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="dark"
+          transition={Bounce}
+        />
+      </ThemeProvider>
     </>
   )
 }
